@@ -1,0 +1,24 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.website_add'|trans }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>
+        {{ 'title.website_add'|trans }}
+    </h1>
+
+    {% include 'default/_form.html.twig' with {
+    page_title: 'title.website_add',
+    attr: {
+    method: 'post',
+    action: url('website_add')
+    },
+    back_to_list_path: 'website_index',
+    } %}
+
+{% endblock %}

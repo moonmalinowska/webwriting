@@ -1,0 +1,16 @@
+/* No CSS needed, but you can pimp the container and the signs as you wish. */
+
+
+/* all sign style */
+.ratyli .rate{color: #ccc; font-size: 24px;}
+
+/* empty sign style */
+.ratyli .rate-empty{color: #666;}
+
+/* full sign style after rating*/
+.ratyli.rated .rate-full{color: #fe5845;}
+
+/* active signs (hover)*/
+.ratyli .rate-active{color: #a94039;}
+
+

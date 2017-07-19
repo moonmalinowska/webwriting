@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+    {% block stylesheets %}
+        {# stylesheets '@bootstrap_css' '../app/Resources/public/css/*' #}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap.css') }}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/own-css.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}"/>
+
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+        {# endstylesheets #}
+    {% endblock %}
+    <script type="text/javascript" src="{{ asset('js/jquery.ratyli.min.js') }}"></script>
+
+</head>
+<body>
+
+<div class="container">
+    {% include 'default/_flash_messages.html.twig' %}
+    {% block body %}{% endblock %}
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('app_page_index') }}"> <span class="glyphicon glyphicon-home"
+                                                                 aria-hidden="true"></span></a></li> {# TU DOMEK   #}
+                <li><a href="{{ url('website_index') }}">KATALOG STRON<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">RANKING <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">O STRONIE <span class="sr-only">(current)</span></a></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="border-right"><a href="#">ZALOGUJ </a></li>
+                <li><a href="#">ZAREJESTRUJ </a></li>            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Footer -->
+<footer class="container-fluid text-center footer">
+    <p>&copy; Copyright by Monika Malinowska | 2017</p>
+</footer>
+
+{% block javascripts %}
+    {% javascripts '@jquery' '@bootstrap_js' '../app/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset('js/rating.js') }}"></script>
+
+    {% endjavascripts %}
+
+
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
+</body>
+</html>

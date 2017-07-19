@@ -1,0 +1,9 @@
+{% include 'default/_form.html.twig' with {
+page_title: 'title.website_edit',
+page_title_param: {'%id%': website.id},
+attr: {
+method: 'post',
+action: url('website_edit', {'id': website.id}),
+},
+back_to_list_path: 'website_index',
+} %}

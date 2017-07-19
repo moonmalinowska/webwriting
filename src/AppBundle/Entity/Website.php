@@ -1,0 +1,172 @@
+<?php
+/**
+ * Website entity.
+ */
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Class Website.
+ *
+ * @package AppBundle\Entity
+ *
+ * @ORM\Table(
+ *     name="websites"
+ * )
+ * @ORM\Entity(
+ *     repositoryClass="AppBundle\Repository\WebsiteRepository"
+ * )
+ * @UniqueEntity(
+ *     groups={"website-default"},
+ *     fields={"name"}
+ * )
+ */
+class Website
+{
+    /**
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
+     */
+    const NUM_ITEMS = 10;
+
+    /**
+     * Primary key.
+     *
+     * @var integer $id
+     *
+     * @ORM\Id
+     * @ORM\Column(
+     *     name="id",
+     *     type="integer",
+     *     nullable=false,
+     *     options={"unsigned"=true},
+     * )
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * Name.
+     *
+     * @var string $name
+     *
+     * @ORM\Column(
+     *     name="name",
+     *     type="string",
+     *     length=128,
+     *     nullable=false,
+     * )
+     *
+     * @Assert\NotBlank(
+     *     groups={"website-default"}
+     * )
+     * @Assert\Length(
+     *     groups={"website-default"},
+     *     min="3",
+     *     max="128",
+     * )
+     */
+    protected $name;
+
+    /**
+     * Url.
+     *
+     * @var string $url
+     *
+     * @ORM\Column(
+     *     name="url",
+     *     type="string",
+     *     length=255,
+     *     nullable=false,
+     * )
+     * @Assert\NotBlank(
+     *     groups={"website-default"}
+     * )
+     * @Assert\Length(
+     *     groups={"website-default"},
+     *     min="5",
+     *     max="255",
+     * )
+     */
+    protected $url;
+
+
+    /**
+     * Many Websites have One Category.
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="websites")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+    /**
+     * @ORM\Column(
+     *     name="created",
+     *     type="datetime",
+     *     nullable=false
+     * )
+     * @var \DateTime $created Created
+     */
+    protected $created;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Website
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Website
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+}

@@ -1,0 +1,14 @@
+{#- block choice_widget_expanded -%}
+    <div class="stars" {{ block('widget_container_attributes') }}>
+
+                {{- form_widget(child), {'class': 'star-1', 'name': "star", 'class': "star-1", 'id': "star-1"} -}}
+                {{- form_label(child, null) }}
+
+    </div>
+{%- endblock choice_widget_expanded -#}
+
+{% block radio_widget %}
+    {% spaceless %}
+        <input type="radio" class="" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} disabled="disabled"/><label></label>
+    {% endspaceless %}
+{% endblock radio_widget %}

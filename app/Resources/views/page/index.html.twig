@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}Webwriting{% endblock %}</title>
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+    {% block stylesheets %}
+        {# stylesheets '@bootstrap_css' '../app/Resources/public/css/*' #}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap.css') }}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/own-css.css') }}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/star-rating.css') }}"/>
+
+        {# endstylesheets #}
+    {% endblock %}
+</head>
+<body>
+
+<div class="container">
+    {% include 'default/_flash_messages.html.twig' %}
+    {% block body %}{% endblock %}
+</div>
+
+<nav class="navbar navbar-inverse navbar-static-top ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="border-right"><a href="#">ZALOGUJ </a></li>
+            <li><a href="#">ZAREJESTRUJ </a></li>
+        </ul>
+    </div>
+
+</nav>
+
+<div class="container-fluid in-navbar">
+    <h1>Webwriting</h1>
+    <p>webwriting score WWS</p>
+    <h2>Oceniaj treści znajdujące się w sieci!</h2>
+
+</div>
+<nav class="navbar navbar-inverse navbar-static-top ">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('app_page_index') }}"> <span class="glyphicon glyphicon-home"
+                                                                 aria-hidden="true"></span></a></li>
+                <li><a href="{{ url('website_index') }}">KATALOG STRON<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">RANKING <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">O STRONIE <span class="sr-only">(current)</span></a></li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="container more-space">
+    <p>TU COŚ O TEJ STRONIE, CO MOŻNA NA NIEJ ROBIC</p>
+    <h2 class="text-center">Kryteria oceny stron internetowych</h2>
+    <div class="">
+        <div class="col-lg-5ths col-md-5ths col-xs-6">{#dla mobilek pod sobą!!#}
+            <h3>Nazwa strony</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-lg-5ths col-md-5ths col-xs-6">
+            <h3>Kategorie</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-lg-5ths col-md-5ths col-xs-6">
+            <h3>Nagłówki</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-lg-5ths col-md-5ths col-xs-6">
+            <h3>Akapity</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-lg-5ths col-md-5ths col-xs-6">
+            <h3>Słowa kluczowe</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container more-space">
+    <h2 class="text-center">Kategorie stron internetowych</h2>
+
+    {#
+    {% if categories is defined and categories|length %}
+        {% for category in categories %}
+
+            <ul>
+            <li><a href="{{ url('category_view', {'id': category.id }) }}">{{ category.name }}</a></li>
+        </ul>
+
+            {% endfor %}
+
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            {{ 'message.empty_list'|trans }}
+        </div>
+    {% endif %}
+#}
+
+    {% if categories is defined and categories|length %}
+        {% set categoriesPerColumn = (categories|length / 3)|round(0, 'ceil') %}
+
+        {% for category in categories %}
+
+            {% if categoriesPerColumn == 1 or loop.index % categoriesPerColumn == 1 %}
+                <div class="col-md-4">
+                <ul>
+            {% endif %}
+
+            <li><a href="{{ url('category_view', {'id': category.id }) }}">{{ category.name }}</a></li>
+
+            {% if loop.last or loop.index % categoriesPerColumn == 0 or loop.last %}
+                </ul>
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            {{ 'message.empty_list'|trans }}
+        </div>
+    {% endif %}
+
+</div>
+
+<div class="container more-space">
+    <h3>Ostatnio dodane strony</h3>
+
+    {% if websites is defined and websites|length %}
+        {% for website in websites %}
+
+            <ul>
+                <li><a href="{{ url('website_view', {'id': website.id }) }}">{{ website.name }}</a></li>
+            </ul>
+
+        {% endfor %}
+
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            {{ 'message.empty_list'|trans }}
+        </div>
+    {% endif %}
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid text-center footer">
+    <p>&copy; Copyright by Monika Malinowska | 2017</p>
+</footer>
+
+{% block javascripts %}
+    {% javascripts '@jquery' '@bootstrap_js' '../app/Resources/public/js/*' %}
+    <script type="text/javascript" src="js/star-rating.js"></script>
+    {% endjavascripts %}
+{% endblock %}
+<script>
+    $('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
+
+    scrollIntervalID = setInterval(stickIt, 10);
+
+
+    function stickIt() {
+
+        var orgElementPos = $('.original').offset();
+        orgElementTop = orgElementPos.top;
+
+        if ($(window).scrollTop() >= (orgElementTop)) {
+            // scrolled past the original position; now only show the cloned, sticky element.
+
+            // Cloned element should always have same left position and width as original element.
+            orgElement = $('.original');
+            coordsOrgElement = orgElement.offset();
+            leftOrgElement = coordsOrgElement.left;
+            widthOrgElement = orgElement.css('width');
+            $('.cloned').css('left',leftOrgElement+'px').css('top',0).css('width',widthOrgElement).show();
+            $('.original').css('visibility','hidden');
+        } else {
+            // not scrolled past the menu; only show the original menu.
+            $('.cloned').hide();
+            $('.original').css('visibility','visible');
+        }
+    }
+</script>
+</body>
+</html>

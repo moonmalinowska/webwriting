@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label.url">
+                <source>label.url</source>
+                <target>URL</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Nazwa strony</target>
+            </trans-unit>
+            <trans-unit id="title.websites">
+                <source>title.websites</source>
+                <target>Katalog stron</target>
+            </trans-unit>
+            <trans-unit id="title.categories">
+                <source>title.categories</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="label.actions">
+                 <source>label.actions</source>
+                 <target></target>
+            </trans-unit>
+            <trans-unit id="action.view">
+                  <source>action.view</source>
+                  <target>Podgląd</target>
+             </trans-unit>
+            <trans-unit id="message.empty_list">
+                   <source>message.empty_list</source>
+                   <target>Brak wyników</target>
+            </trans-unit>
+
+        </body>
+
+    </file>
+</xliff>

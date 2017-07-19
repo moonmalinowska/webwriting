@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.rating_add'|trans }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>
+        {{ 'title.rating_add'|trans }}
+    </h1>
+    {{ form_start(form, { method: 'post', action: url('rating_add') }) }}
+    <span class="ratyli">
+
+    {% form_theme form 'form/fields.html.twig' %}
+    {{ form_widget(form) }}
+    </span>
+    {{ form_end(form) }}
+
+    {#
+    {{ form_start(form) }} {{ form_errors(form) }}
+    <div class="stars">
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'star-1', 'type': 'checkbox'}}) }}
+    </div>
+
+    {{ form_end(form) }}
+
+
+    {{ form_start(form, { method: 'post', action: url('rating_add') }) }}
+
+    {% if false == form.vars.valid %}
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ 'message.form_error'|trans }}
+        </div>
+    {% endif %}
+
+    {{ form_widget(form) }}
+    <div class="stars">
+    <div>
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+    </div>
+    {{ form_end(form) }}
+
+#}
+
+
+{% endblock %}
