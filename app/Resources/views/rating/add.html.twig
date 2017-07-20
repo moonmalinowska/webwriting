@@ -1,51 +1,253 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-{% block title %}
-    {{ 'title.rating_add'|trans }}
-{% endblock %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+
+    {% block stylesheets %}
+        {# stylesheets '@bootstrap_css' '../app/Resources/public/css/*' #}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap.css') }}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/own-css.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}"/>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+              type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+
+
+        {# endstylesheets #}
+    {% endblock %}
+</head>
+<body>
 
 {% block body %}
-
-    <h1>
-        {{ 'title.rating_add'|trans }}
-    </h1>
-    {{ form_start(form, { method: 'post', action: url('rating_add') }) }}
-    <span class="ratyli">
-
-    {% form_theme form 'form/fields.html.twig' %}
-    {{ form_widget(form) }}
-    </span>
-    {{ form_end(form) }}
-
     {#
-    {{ form_start(form) }} {{ form_errors(form) }}
-    <div class="stars">
-    {{ form_label(form.name) }}
-    {{ form_widget(form.name, {'attr': {'class': 'star-1', 'type': 'checkbox'}}) }}
+<table id="vcw_container">
+    <tbody>
+    <tr>
+        <td id="vcw_left">
+            <div id="vcw_left_content">
+
+
+            </div>
+
+
+
+
+
+                <div class="hr"></div>
+
+
+        </td>
+        <td class="embed-responsive embed-responsive-4by3" width="100%">
+            <iframe src="{{ website.url }}" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    <div class="container">
+    <div class=".col-md-3">
+<p>coś</p>
     </div>
+        <div class=".col-md-9">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{{ website.url }}" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
 
-    {{ form_end(form) }}
-
-
-    {{ form_start(form, { method: 'post', action: url('rating_add') }) }}
-
-    {% if false == form.vars.valid %}
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ 'message.form_error'|trans }}
+            </div>
         </div>
-    {% endif %}
+    </div>#}
+    <div class="container-fluid has-sidebar sidebar-expanded" id="main-section">
+        <div class="sidebar">
+            <ul class="nav nav-sidebar">
+                <h3 class="text-center">
+                    LOGO (moje)
+                </h3>
+                <div class="" id="lighter">
 
-    {{ form_widget(form) }}
-    <div class="stars">
-    <div>
-        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+                    <h4 class="h4-up-space">Oceniana strona:</h4>
+                    <p>
+                        <strong>{{ website.name }}</strong>
+                    </p>
+                    <p>
+                        {{ website.url }}
+                    </p>
+                    <h4 class="h4-up-space">Twoja ocena:</h4>
+
+                    <p>
+                        {{ 3|rating(5, "fa-3x") }}
+
+
+                        {{ 2|rating }}
+                    </p>
+
+                    <p>
+                        {#
+                        <form>
+                            <div class="stars">
+                                <input type="radio" name="star" class="star-1" id="star-1" />
+                                <label class="star-1" for="star-1">1</label>
+                                <input type="radio" name="star" class="star-2" id="star-2" />
+                                <label class="star-2" for="star-2">2</label>
+                                <input type="radio" name="star" class="star-3" id="star-3" />
+                                <label class="star-3" for="star-3">3</label>
+                                <input type="radio" name="star" class="star-4" id="star-4" />
+                                <label class="star-4" for="star-4">4</label>
+                                <input type="radio" name="star" class="star-5" id="star-5" />
+                                <label class="star-5" for="star-5">5</label>
+                                <span></span>
+                            </div>
+                        </form>
+    #}
+                    </p>
+                    <p>
+                        lorem
+                    </p>
+                    <p>
+                        lorem
+                    </p>
+                    <p>
+                        lorem
+                    </p>
+
+                </div>
+                {#<li><a href="#" title="Menu Item 1"><span class="glyphicon glyphicon-user"></span> <span class="item-label">Menu Item 1</span></a></li>
+                <li><a href="#" title="Menu Item 2"><span class="glyphicon glyphicon-stop"></span> <span class="item-label">Menu Item 2</span></a></li>
+                 <li><a href="#" id="collapse-nav"><span id="toggle-collapse" class="glyphicon glyphicon-circle-arrow-left"></span> <span class="item-label">Collapse Navigation</span></a></li> #}
+
+                <a class="btn btn-back btn-lg btn-block" href="{{ path('app_page_index') }}"><span
+                            class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    <p>Powrót na stronę główną</p></a>
+            </ul>
+        </div>
+
+        <div class="embed-responsive embed-responsive-4by3 float-right">
+            <iframe class="embed-responsive-item" src="{{ website.url }}" frameborder="0" height="100%" width="84%"
+                    align="right" scrolling="auto" allowfullscreen></iframe>
+
+        </div>
     </div>
-    {{ form_end(form) }}
-
-#}
-
-
 {% endblock %}
+
+{% block javascripts %}
+    {# javascripts '@jquery' '@bootstrap_js' '../app/Resources/public/js/*' #}
+    {% javascripts '../app/Resources/public/js/*' '@StarRatingBundle/Resources/public/js/rating.js' %}
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/rating.js') }}"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+
+
+    {% endjavascripts %}
+
+
+    <script type="text/javascript">
+        {#$("#input-id").rating({size:'xs',language:'pl'});#}
+
+        the_height = document.getElementById('the_iframe').contentWindow.document.body.scrollHeight;
+        document.getElementById('the_iframe').height = the_height;
+
+        var sidebarState = sessionStorage.getItem('sidebarState');
+
+        windowWidth = $(window).width();
+
+        $(window).resize(function () {
+            windowWidth = $(window).width();
+
+            if (windowWidth < 992) { //992 is the value of $screen-md-min in boostrap variables.scss
+                $('#main-section').removeClass('sidebar-expanded').addClass('sidebar-collapsed');
+                $('#toggle-collapse').removeClass('glyphicon-circle-arrow-left').addClass('glyphicon-circle-arrow-right');
+            }
+            else {
+                if (sidebarState) {
+                    $('#main-section').addClass('sidebar-collapsed').removeClass('sidebar-expanded');
+                    $('#toggle-collapse').removeClass('glyphicon-circle-arrow-left').addClass('glyphicon-circle-arrow-right');
+                }
+                else {
+                    $('#main-section').addClass('sidebar-expanded').removeClass('sidebar-collapsed');
+                    $('#toggle-collapse').removeClass('glyphicon-circle-arrow-right').addClass('glyphicon-circle-arrow-left');
+                }
+            }
+        });
+        function setSidebarState(value) {
+            sessionStorage.setItem('sidebarState', value);
+        }
+
+        function clearSidebarState() {
+            sessionStorage.removeItem('sidebarState');
+        }
+
+        function collapseSidebar() {
+            $('#main-section').addClass('sidebar-collapsed').removeClass('sidebar-expanded');
+            $('#toggle-collapse').removeClass('glyphicon-circle-arrow-left').addClass('glyphicon-circle-arrow-right');
+        }
+
+        function expandSidebar() {
+            $('#main-section').addClass('sidebar-expanded').removeClass('sidebar-collapsed');
+            $('#toggle-collapse').removeClass('glyphicon-circle-arrow-right').addClass('glyphicon-circle-arrow-left');
+        }
+
+        $(function () {
+
+            console.log(windowWidth);
+
+            /** check sessionStorage to expand/collapse sidebar onload **/
+
+
+            if (sidebarState == "collapsed") {
+                collapseSidebar();
+            }
+            else {
+
+
+                if (windowWidth < 992) { //992 is the value of $screen-md-min in boostrap variables.scss
+                    $('#main-section').removeClass('sidebar-expanded').addClass('sidebar-collapsed');
+                    $('#toggle-collapse').removeClass('glyphicon-circle-arrow-left').addClass('glyphicon-circle-arrow-right');
+                }
+                else {
+                    if (sidebarState) {
+                        $('#main-section').addClass('sidebar-collapsed').removeClass('sidebar-expanded');
+                        $('#toggle-collapse').removeClass('glyphicon-circle-arrow-left').addClass('glyphicon-circle-arrow-right');
+                    }
+                    else {
+                        $('#main-section').addClass('sidebar-expanded').removeClass('sidebar-collapsed');
+                        $('#toggle-collapse').removeClass('glyphicon-circle-arrow-right').addClass('glyphicon-circle-arrow-left');
+                    }
+                }
+
+            }
+
+
+            /** collapse the sidebar navigation **/
+            $('#collapse-nav').click(function () {
+                if (!($('#main-section').hasClass('sidebar-collapsed'))) { // if sidebar is not yet collapsed
+                    collapseSidebar();
+                    setSidebarState('collapsed');
+                }
+                else {
+                    expandSidebar();
+                    clearSidebarState();
+                }
+                return false;
+            })
+        })
+
+
+
+
+    </script>
+{% endblock %}
+</body>
+</html>
+
+
