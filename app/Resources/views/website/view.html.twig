@@ -13,15 +13,13 @@
         {# stylesheets '@bootstrap_css' '../app/Resources/public/css/*' #}
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap.css') }}"/>
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/own-css.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
 
-        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}"/>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
               type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
-
 
 
         {# endstylesheets #}
@@ -30,41 +28,7 @@
 <body>
 
 {% block body %}
-    {#
-<table id="vcw_container">
-    <tbody>
-    <tr>
-        <td id="vcw_left">
-            <div id="vcw_left_content">
 
-
-            </div>
-
-
-
-
-
-                <div class="hr"></div>
-
-
-        </td>
-        <td class="embed-responsive embed-responsive-4by3" width="100%">
-            <iframe src="{{ website.url }}" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
-        </td>
-    </tr>
-    </tbody>
-</table>
-    <div class="container">
-    <div class=".col-md-3">
-<p>coś</p>
-    </div>
-        <div class=".col-md-9">
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="{{ website.url }}" frameborder="0" height="100%" width="100%" allowfullscreen></iframe>
-
-            </div>
-        </div>
-    </div>#}
     <div class="container-fluid has-sidebar sidebar-expanded" id="main-section">
         <div class="sidebar">
             <ul class="nav nav-sidebar">
@@ -107,7 +71,7 @@
                             </div>
                         </form>
     #}
-                        </p>
+                    </p>
                     <p>
                         lorem
                     </p>
@@ -241,8 +205,6 @@
                 return false;
             })
         })
-
-
 
 
     </script>

@@ -17,6 +17,8 @@ use Pagerfanta\Adapter\ArrayAdapter;
 use Pagerfanta\Pagerfanta;
 use AppBundle\Form\RatingType;
 use AppBundle\Entity\Rating;
+use AppBundle\Repository\RatingRepository;
+
 
 /**
  * Class WebsiteController.
@@ -39,12 +41,12 @@ class WebsiteController extends Controller
      *     defaults={"page": 1},
      *     name="website_index"
      * )
-     *@Route(
+     * @Route(
      *     "/page/{page}",
      *     requirements={"page": "[1-9]\d*"},
      *     name="website_index_paginated",
      * )
-     *  @Method("GET")
+     * @Method("GET")
      */
     public function indexAction($page)
     {
@@ -60,22 +62,44 @@ class WebsiteController extends Controller
      * View action.
      *
      * @param Website $website Website entity
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route(
      *     "/{id}",
      *     requirements={"id": "[1-9]\d*"},
      *     name="website_view",
      * )
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function viewAction(Website $website)
+    public function viewAction(Website $website, Request $request)
     {
+        $rating = new Rating();
+
+        $form = $this->createForm(RatingType::class, $rating);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('app.repository.rating')->save($rating);
+            $this->addFlash('success', 'message.created_successfully');
+
+            return $this->redirectToRoute('app_page_index');
+        }
+
+
+        return $this->render(
+            'website/view.html.twig',
+            ['website' => $website,
+                'rating' => $rating,
+                'form' => $form->createView()]
+        );
+/*
         return $this->render(
             'website/view.html.twig',
             ['website' => $website]
-        );
+        );*/
     }
 
     /**
@@ -101,7 +125,7 @@ class WebsiteController extends Controller
             $this->get('app.repository.website')->save($website);
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('website_index');
+            return $this->redirectToRoute('app_page_index');
         }
 
         return $this->render(
